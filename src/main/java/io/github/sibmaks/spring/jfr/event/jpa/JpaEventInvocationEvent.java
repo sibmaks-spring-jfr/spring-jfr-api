@@ -12,7 +12,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @StackTrace
 @Category("Spring Controller Flight Recorder")
-@Name("io.github.sibmaks.spring.jfr.event.jpa.JpaEventInvocationEvent")
 @Label("JPA Invocation Event")
 public class JpaEventInvocationEvent extends Event {
     @Label("Method Name")

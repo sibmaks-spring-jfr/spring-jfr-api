@@ -12,7 +12,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @StackTrace(false)
 @Category("Spring Controller Flight Recorder")
-@Name("io.github.sibmaks.spring.jfr.event.controller.RestControllerInvocationEvent")
 @Label("RestController Invocation Event")
 public class RestControllerInvocationEvent extends Event {
     @Label("Method Name")

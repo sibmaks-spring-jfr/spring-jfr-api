@@ -12,7 +12,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @StackTrace(false)
 @Category("Spring Scheduled Flight Recorder")
-@Name("io.github.sibmaks.spring.jfr.event.scheduled.ScheduledInvocationEvent")
 @Label("Scheduled Task Invocation Event")
 public class ScheduledInvocationEvent extends Event {
     @Label("Method Name")

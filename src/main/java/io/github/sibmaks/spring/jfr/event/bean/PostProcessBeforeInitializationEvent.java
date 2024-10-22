@@ -14,7 +14,6 @@ import lombok.Getter;
 @AllArgsConstructor
 @StackTrace(false)
 @Category("Spring Beans Flight Recorder")
-@Name("io.github.sibmaks.spring.jfr.event.bean.PostProcessBeforeInitializationEvent")
 @Label("Post Process Before Initialization Invoked")
 public class PostProcessBeforeInitializationEvent extends Event {
     @Label("Bean name")

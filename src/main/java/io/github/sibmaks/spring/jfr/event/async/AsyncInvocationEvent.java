@@ -12,7 +12,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @StackTrace
 @Category("Spring Async Flight Recorder")
-@Name("io.github.sibmaks.spring.jfr.event.async.AsyncInvocationEvent")
 @Label("Async Invocation Event")
 public class AsyncInvocationEvent extends Event {
     @Label("Method Name")
