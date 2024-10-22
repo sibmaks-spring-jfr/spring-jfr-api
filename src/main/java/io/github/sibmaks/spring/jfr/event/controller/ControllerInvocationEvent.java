@@ -1,8 +1,18 @@
 package io.github.sibmaks.spring.jfr.event.controller;
 
-import jdk.jfr.Event;
-import jdk.jfr.Label;
+import jdk.jfr.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
+@Setter
+@Getter
+@Builder
+@AllArgsConstructor
+@StackTrace(false)
+@Category("Spring Controller Flight Recorder")
+@Name("io.github.sibmaks.spring.jfr.event.controller.ControllerInvocationEvent")
 @Label("Controller Invocation Event")
 public class ControllerInvocationEvent extends Event {
     @Label("Method Name")
@@ -24,23 +34,4 @@ public class ControllerInvocationEvent extends Event {
         this.url = url;
     }
 
-    public String getMethodName() {
-        return methodName;
-    }
-
-    public String getMethod() {
-        return method;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public String getException() {
-        return exception;
-    }
-
-    public void setException(String exception) {
-        this.exception = exception;
-    }
 }

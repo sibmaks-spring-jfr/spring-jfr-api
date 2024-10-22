@@ -1,8 +1,18 @@
 package io.github.sibmaks.spring.jfr.event.async;
 
-import jdk.jfr.Event;
-import jdk.jfr.Label;
+import jdk.jfr.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
+@Setter
+@Getter
+@Builder
+@AllArgsConstructor
+@StackTrace
+@Category("Spring Async Flight Recorder")
+@Name("io.github.sibmaks.spring.jfr.event.async.AsyncInvocationEvent")
 @Label("Async Invocation Event")
 public class AsyncInvocationEvent extends Event {
     @Label("Method Name")
@@ -18,33 +28,5 @@ public class AsyncInvocationEvent extends Event {
             String methodName
     ) {
         this.methodName = methodName;
-    }
-
-    public String getMethodName() {
-        return methodName;
-    }
-
-    public Long getFeatureExecutionTime() {
-        return featureExecutionTime;
-    }
-
-    public void setFeatureExecutionTime(Long featureExecutionTime) {
-        this.featureExecutionTime = featureExecutionTime;
-    }
-
-    public String getExecutionException() {
-        return executionException;
-    }
-
-    public void setExecutionException(String executionException) {
-        this.executionException = executionException;
-    }
-
-    public String getException() {
-        return exception;
-    }
-
-    public void setException(String exception) {
-        this.exception = exception;
     }
 }

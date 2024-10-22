@@ -1,8 +1,18 @@
 package io.github.sibmaks.spring.jfr.event.jpa;
 
-import jdk.jfr.Event;
-import jdk.jfr.Label;
+import jdk.jfr.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
+@Setter
+@Getter
+@Builder
+@AllArgsConstructor
+@StackTrace
+@Category("Spring Controller Flight Recorder")
+@Name("io.github.sibmaks.spring.jfr.event.jpa.JpaEventInvocationEvent")
 @Label("JPA Invocation Event")
 public class JpaEventInvocationEvent extends Event {
     @Label("Method Name")
@@ -15,15 +25,4 @@ public class JpaEventInvocationEvent extends Event {
         this.methodName = methodName;
     }
 
-    public String getMethodName() {
-        return methodName;
-    }
-
-    public String getException() {
-        return exception;
-    }
-
-    public void setException(String exception) {
-        this.exception = exception;
-    }
 }

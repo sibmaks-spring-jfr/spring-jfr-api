@@ -1,8 +1,18 @@
 package io.github.sibmaks.spring.jfr.event.scheduled;
 
-import jdk.jfr.Event;
-import jdk.jfr.Label;
+import jdk.jfr.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
+@Setter
+@Getter
+@Builder
+@AllArgsConstructor
+@StackTrace(false)
+@Category("Spring Scheduled Flight Recorder")
+@Name("io.github.sibmaks.spring.jfr.event.scheduled.ScheduledInvocationEvent")
 @Label("Scheduled Task Invocation Event")
 public class ScheduledInvocationEvent extends Event {
     @Label("Method Name")
@@ -10,20 +20,4 @@ public class ScheduledInvocationEvent extends Event {
 
     @Label("Exception")
     private String exception;
-
-    public ScheduledInvocationEvent(String methodName) {
-        this.methodName = methodName;
-    }
-
-    public String getMethodName() {
-        return methodName;
-    }
-
-    public String getException() {
-        return exception;
-    }
-
-    public void setException(String exception) {
-        this.exception = exception;
-    }
 }
