@@ -19,7 +19,7 @@ import java.util.List;
 @AllArgsConstructor
 @StackTrace(false)
 @Name("io.github.sibmaks.spring.jfr.event.bean.BeanDefinitionRegisteredEvent")
-@Label("Post Process Before Initialization Invoked")
+@Label("Bean Definition Registered")
 public class BeanDefinitionRegisteredEvent extends Event {
     @Label("Bean name")
     private final String beanName;
