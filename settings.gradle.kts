@@ -1,2 +1,1 @@
-rootProject.name = "spring-jfr"
-include("api", "app", "sandbox")
+rootProject.name = "spring-jfr-api"

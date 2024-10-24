@@ -1,10 +1,7 @@
 package io.github.sibmaks.spring.jfr.event.bean;
 
 import io.github.sibmaks.spring.jfr.event.converter.DependencyConverter;
-import jdk.jfr.Category;
-import jdk.jfr.Event;
-import jdk.jfr.Label;
-import jdk.jfr.StackTrace;
+import jdk.jfr.*;
 import lombok.Builder;
 import lombok.Getter;
 
