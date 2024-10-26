@@ -21,7 +21,7 @@ public class BeanDefinitionRegisteredEvent extends Event {
     @Label("Bean name")
     private final String beanName;
     @Label("Bean primary flag")
-    private final Boolean primary;
+    private final String primary;
     @Label("Bean's dependencies")
     private final String dependencies;
     @Label("Bean generated flag")
@@ -32,7 +32,7 @@ public class BeanDefinitionRegisteredEvent extends Event {
             String scope,
             String beanClassName,
             String beanName,
-            Boolean primary,
+            String primary,
             String[] dependencies,
             boolean generated
     ) {
