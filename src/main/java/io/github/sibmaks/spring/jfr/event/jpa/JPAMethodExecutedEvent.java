@@ -15,8 +15,6 @@ import lombok.Setter;
 @Category(Constants.CATEGORY_JPA)
 @Label("JPA Invocation Event")
 public class JPAMethodExecutedEvent extends Event {
-    @Label("Correlation Id")
-    private final String correlationId;
     @Label("Invocation Id")
     private final String invocationId;
 }

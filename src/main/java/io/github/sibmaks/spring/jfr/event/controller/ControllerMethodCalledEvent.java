@@ -20,6 +20,8 @@ import lombok.Setter;
 public class ControllerMethodCalledEvent extends Event {
     @Label("Invocation Id")
     private final String invocationId;
+    @Label("Class Name")
+    private final String className;
     @Label("Method Name")
     private final String methodName;
     @Label("Method")

@@ -18,8 +18,6 @@ import lombok.Setter;
 @Category(Constants.CATEGORY_JPA)
 @Label("JPA Invocation Event")
 public class JPAMethodFailedEvent extends Event {
-    @Label("Correlation Id")
-    private final String correlationId;
     @Label("Invocation Id")
     private final String invocationId;
     @Label("Exception Class")
