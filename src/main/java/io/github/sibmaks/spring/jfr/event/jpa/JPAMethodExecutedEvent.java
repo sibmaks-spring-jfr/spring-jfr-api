@@ -13,7 +13,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @StackTrace(false)
 @Category(Constants.CATEGORY_JPA)
-@Label("JPA Invocation Event")
+@Label("JPA Method Executed Event")
 public class JPAMethodExecutedEvent extends Event {
     @Label("Invocation Id")
     private final String invocationId;
