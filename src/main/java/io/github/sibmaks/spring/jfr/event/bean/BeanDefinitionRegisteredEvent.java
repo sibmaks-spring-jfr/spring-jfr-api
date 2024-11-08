@@ -1,5 +1,6 @@
 package io.github.sibmaks.spring.jfr.event.bean;
 
+import io.github.sibmaks.spring.jfr.event.constant.Constants;
 import io.github.sibmaks.spring.jfr.event.converter.DependencyConverter;
 import jdk.jfr.*;
 import lombok.Builder;
@@ -11,7 +12,7 @@ import lombok.Getter;
  */
 @Getter
 @StackTrace(false)
-@Category("Spring Beans Flight Recorder")
+@Category(Constants.CATEGORY_BEAN)
 @Label("Bean Definition Registered")
 public class BeanDefinitionRegisteredEvent extends Event {
     @Label("Bean scope")
