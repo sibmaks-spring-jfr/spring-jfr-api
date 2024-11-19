@@ -18,6 +18,8 @@ import lombok.Setter;
 @Category(Constants.CATEGORY_CONTROLLER)
 @Label("Controller Method Called Event")
 public class ControllerMethodCalledEvent extends Event {
+    @Label("Spring Context Id")
+    private final String contextId;
     @Label("Invocation Id")
     private final String invocationId;
     @Label("Class Name")

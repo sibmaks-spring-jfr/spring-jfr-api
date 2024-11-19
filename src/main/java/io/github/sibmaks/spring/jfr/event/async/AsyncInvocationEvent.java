@@ -14,6 +14,8 @@ import lombok.Setter;
 @Category("Spring Async Flight Recorder")
 @Label("Async Invocation Event")
 public class AsyncInvocationEvent extends Event {
+    @Label("Spring Context Id")
+    private final String contextId;
     @Label("Class Name")
     private final String className;
     @Label("Method Name")
@@ -26,9 +28,11 @@ public class AsyncInvocationEvent extends Event {
     private String exception;
 
     public AsyncInvocationEvent(
+            String contextId,
             String className,
             String methodName
     ) {
+        this.contextId = contextId;
         this.className = className;
         this.methodName = methodName;
     }

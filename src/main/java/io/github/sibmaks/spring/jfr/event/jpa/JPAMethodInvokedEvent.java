@@ -18,6 +18,8 @@ import lombok.Setter;
 @Category(Constants.CATEGORY_JPA)
 @Label("JPA Method Invoked Event")
 public class JPAMethodInvokedEvent extends Event {
+    @Label("Spring Context Id")
+    private final String contextId;
     @Label("Correlation Id")
     private final String correlationId;
     @Label("Invocation Id")

@@ -17,6 +17,8 @@ import lombok.Getter;
 @Category(Constants.CATEGORY_BEAN)
 @Label("Post Process After Initialization Invoked")
 public class PostProcessAfterInitializationEvent extends Event {
+    @Label("Spring Context Id")
+    private final String contextId;
     @Label("Bean name")
     private final String beanName;
 }

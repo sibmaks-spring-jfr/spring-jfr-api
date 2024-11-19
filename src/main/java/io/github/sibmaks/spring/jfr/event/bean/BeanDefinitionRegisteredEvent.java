@@ -15,6 +15,8 @@ import lombok.Getter;
 @Category(Constants.CATEGORY_BEAN)
 @Label("Bean Definition Registered")
 public class BeanDefinitionRegisteredEvent extends Event {
+    @Label("Spring Context Id")
+    private final String contextId;
     @Label("Bean scope")
     private final String scope;
     @Label("Bean class name")
@@ -30,6 +32,7 @@ public class BeanDefinitionRegisteredEvent extends Event {
 
     @Builder
     public BeanDefinitionRegisteredEvent(
+            String contextId,
             String scope,
             String beanClassName,
             String beanName,
@@ -37,6 +40,7 @@ public class BeanDefinitionRegisteredEvent extends Event {
             String[] dependencies,
             boolean generated
     ) {
+        this.contextId = contextId;
         this.scope = scope;
         this.beanClassName = beanClassName;
         this.beanName = beanName;
