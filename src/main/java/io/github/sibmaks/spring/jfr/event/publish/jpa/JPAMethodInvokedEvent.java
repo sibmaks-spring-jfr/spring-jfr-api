@@ -1,6 +1,6 @@
-package io.github.sibmaks.spring.jfr.event.jpa;
+package io.github.sibmaks.spring.jfr.event.publish.jpa;
 
-import io.github.sibmaks.spring.jfr.event.constant.Constants;
+import io.github.sibmaks.spring.jfr.event.constant.Categories;
 import jdk.jfr.Category;
 import jdk.jfr.Event;
 import jdk.jfr.Label;
@@ -15,7 +15,7 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 @StackTrace(false)
-@Category(Constants.CATEGORY_JPA)
+@Category(Categories.JPA)
 @Label("JPA Method Invoked Event")
 public class JPAMethodInvokedEvent extends Event {
     @Label("Spring Context Id")

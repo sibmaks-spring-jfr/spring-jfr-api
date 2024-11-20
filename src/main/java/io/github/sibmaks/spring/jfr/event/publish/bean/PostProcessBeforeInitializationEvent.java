@@ -1,6 +1,6 @@
-package io.github.sibmaks.spring.jfr.event.bean;
+package io.github.sibmaks.spring.jfr.event.publish.bean;
 
-import io.github.sibmaks.spring.jfr.event.constant.Constants;
+import io.github.sibmaks.spring.jfr.event.constant.Categories;
 import jdk.jfr.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,9 +14,9 @@ import lombok.Getter;
 @Builder
 @AllArgsConstructor
 @StackTrace(false)
-@Category(Constants.CATEGORY_BEAN)
-@Label("Post Process After Initialization Invoked")
-public class PostProcessAfterInitializationEvent extends Event {
+@Category(Categories.BEAN)
+@Label("Post Process Before Initialization Invoked")
+public class PostProcessBeforeInitializationEvent extends Event {
     @Label("Spring Context Id")
     private final String contextId;
     @Label("Bean name")

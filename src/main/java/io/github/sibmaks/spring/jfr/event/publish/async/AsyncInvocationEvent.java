@@ -1,4 +1,4 @@
-package io.github.sibmaks.spring.jfr.event.async;
+package io.github.sibmaks.spring.jfr.event.publish.async;
 
 import jdk.jfr.*;
 import lombok.AllArgsConstructor;

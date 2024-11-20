@@ -1,6 +1,6 @@
-package io.github.sibmaks.spring.jfr.event.jpa;
+package io.github.sibmaks.spring.jfr.event.publish.jpa;
 
-import io.github.sibmaks.spring.jfr.event.constant.Constants;
+import io.github.sibmaks.spring.jfr.event.constant.Categories;
 import jdk.jfr.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,7 +12,7 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 @StackTrace(false)
-@Category(Constants.CATEGORY_JPA)
+@Category(Categories.JPA)
 @Label("JPA Method Executed Event")
 public class JPAMethodExecutedEvent extends Event {
     @Label("Invocation Id")

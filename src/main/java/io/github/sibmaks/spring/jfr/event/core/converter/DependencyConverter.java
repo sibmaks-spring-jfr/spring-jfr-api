@@ -1,4 +1,4 @@
-package io.github.sibmaks.spring.jfr.event.converter;
+package io.github.sibmaks.spring.jfr.event.core.converter;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

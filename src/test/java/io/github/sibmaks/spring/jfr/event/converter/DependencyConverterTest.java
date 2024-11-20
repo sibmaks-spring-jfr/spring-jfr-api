@@ -1,5 +1,6 @@
 package io.github.sibmaks.spring.jfr.event.converter;
 
+import io.github.sibmaks.spring.jfr.event.core.converter.DependencyConverter;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
