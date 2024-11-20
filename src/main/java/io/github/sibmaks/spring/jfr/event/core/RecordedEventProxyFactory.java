@@ -46,16 +46,19 @@ public class RecordedEventProxyFactory {
             methods2Name.put(method, name.value());
         }
 
+        var classLoader = type.getClassLoader();
+        var interfaces = getInterfaces(type).toArray(Class[]::new);
+
         try {
             return (T) Proxy.newProxyInstance(
-                    type.getClassLoader(),
-                    getInterfaces(type).toArray(Class[]::new),
+                    classLoader,
+                    interfaces,
                     (proxy, method, args) -> {
                         var key = methods2Name.get(method);
-                        if (key != null) {
-                            return event.getValue(key);
+                        if (key == null) {
+                            return method.invoke(proxy, args);
                         }
-                        throw new NoSuchMethodException("Method " + method.getName() + " not found");
+                        return event.getValue(key);
                     }
             );
         } catch (Exception e) {

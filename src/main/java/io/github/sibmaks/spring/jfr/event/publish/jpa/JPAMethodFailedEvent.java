@@ -1,5 +1,6 @@
 package io.github.sibmaks.spring.jfr.event.publish.jpa;
 
+import io.github.sibmaks.spring.jfr.event.api.jpa.JPAMethodFailedFact;
 import io.github.sibmaks.spring.jfr.event.constant.Categories;
 import jdk.jfr.Category;
 import jdk.jfr.Event;
@@ -17,11 +18,8 @@ import lombok.Setter;
 @StackTrace(false)
 @Category(Categories.JPA)
 @Label("JPA Method Failed Event")
-public class JPAMethodFailedEvent extends Event {
-    @Label("Invocation Id")
+public class JPAMethodFailedEvent extends Event implements JPAMethodFailedFact {
     private final String invocationId;
-    @Label("Exception Class")
     private final String exceptionClass;
-    @Label("Exception Message")
     private final String exceptionMessage;
 }

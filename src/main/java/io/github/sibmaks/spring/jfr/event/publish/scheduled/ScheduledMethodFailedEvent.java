@@ -1,5 +1,6 @@
 package io.github.sibmaks.spring.jfr.event.publish.scheduled;
 
+import io.github.sibmaks.spring.jfr.event.api.scheduled.ScheduledMethodFailedFact;
 import io.github.sibmaks.spring.jfr.event.constant.Categories;
 import jdk.jfr.Category;
 import jdk.jfr.Event;
@@ -17,11 +18,8 @@ import lombok.Setter;
 @StackTrace(false)
 @Category(Categories.SCHEDULED)
 @Label("Scheduled Method Failed Event")
-public class ScheduledMethodFailedEvent extends Event {
-    @Label("Invocation Id")
+public class ScheduledMethodFailedEvent extends Event implements ScheduledMethodFailedFact {
     private final String invocationId;
-    @Label("Exception Class")
     private final String exceptionClass;
-    @Label("Exception Message")
     private final String exceptionMessage;
 }

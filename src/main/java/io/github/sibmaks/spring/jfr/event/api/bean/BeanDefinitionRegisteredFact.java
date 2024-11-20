@@ -38,6 +38,7 @@ public interface BeanDefinitionRegisteredFact {
     boolean isGenerated();
 
     default String[] getDependenciesAsArray() {
-        return DependencyConverter.convert(getDependencies());
+        var dependencies = getDependencies();
+        return DependencyConverter.convert(dependencies);
     }
 }

@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class Categories {
+    public static final String ASYNC = "Spring Async Flight Recorder";
     public static final String CONTROLLER = "Spring Controller Flight Recorder";
     public static final String BEAN = "Spring Beans Flight Recorder";
     public static final String SCHEDULED = "Spring Scheduled Flight Recorder";

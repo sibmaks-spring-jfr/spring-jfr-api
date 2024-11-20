@@ -1,6 +1,6 @@
-package io.github.sibmaks.spring.jfr.event.publish.controller;
+package io.github.sibmaks.spring.jfr.event.publish.async;
 
-import io.github.sibmaks.spring.jfr.event.api.controller.ControllerMethodExecutedFact;
+import io.github.sibmaks.spring.jfr.event.api.async.AsyncMethodFailedFact;
 import io.github.sibmaks.spring.jfr.event.constant.Categories;
 import jdk.jfr.Category;
 import jdk.jfr.Event;
@@ -16,8 +16,10 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 @StackTrace(false)
-@Category(Categories.CONTROLLER)
-@Label("Controller Method Executed Event")
-public class ControllerMethodExecutedEvent extends Event implements ControllerMethodExecutedFact {
+@Category(Categories.ASYNC)
+@Label("Async Method Called Event")
+public class AsyncMethodFailedEvent extends Event implements AsyncMethodFailedFact {
     private final String invocationId;
+    private final String exceptionClass;
+    private final String exceptionMessage;
 }

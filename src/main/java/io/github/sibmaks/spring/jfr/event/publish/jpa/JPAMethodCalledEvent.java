@@ -1,5 +1,6 @@
 package io.github.sibmaks.spring.jfr.event.publish.jpa;
 
+import io.github.sibmaks.spring.jfr.event.api.jpa.JPAMethodCalledFact;
 import io.github.sibmaks.spring.jfr.event.constant.Categories;
 import jdk.jfr.Category;
 import jdk.jfr.Event;
@@ -14,18 +15,13 @@ import lombok.Setter;
 @Getter
 @Builder
 @AllArgsConstructor
-@StackTrace(false)
+@StackTrace
 @Category(Categories.JPA)
 @Label("JPA Method Invoked Event")
-public class JPAMethodInvokedEvent extends Event {
-    @Label("Spring Context Id")
+public class JPAMethodCalledEvent extends Event implements JPAMethodCalledFact {
     private final String contextId;
-    @Label("Correlation Id")
     private final String correlationId;
-    @Label("Invocation Id")
     private final String invocationId;
-    @Label("Class Name")
     private final String className;
-    @Label("Method Name")
     private final String methodName;
 }

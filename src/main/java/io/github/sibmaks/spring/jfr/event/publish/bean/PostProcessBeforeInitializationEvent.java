@@ -1,5 +1,6 @@
 package io.github.sibmaks.spring.jfr.event.publish.bean;
 
+import io.github.sibmaks.spring.jfr.event.api.bean.PostProcessBeforeInitializationFact;
 import io.github.sibmaks.spring.jfr.event.constant.Categories;
 import jdk.jfr.*;
 import lombok.AllArgsConstructor;
@@ -16,9 +17,7 @@ import lombok.Getter;
 @StackTrace(false)
 @Category(Categories.BEAN)
 @Label("Post Process Before Initialization Invoked")
-public class PostProcessBeforeInitializationEvent extends Event {
-    @Label("Spring Context Id")
+public class PostProcessBeforeInitializationEvent extends Event implements PostProcessBeforeInitializationFact {
     private final String contextId;
-    @Label("Bean name")
     private final String beanName;
 }
