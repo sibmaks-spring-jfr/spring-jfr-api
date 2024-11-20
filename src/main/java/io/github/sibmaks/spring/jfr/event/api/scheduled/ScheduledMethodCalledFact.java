@@ -1,26 +1,11 @@
 package io.github.sibmaks.spring.jfr.event.api.scheduled;
 
-import jdk.jfr.Label;
-import jdk.jfr.Name;
+import io.github.sibmaks.spring.jfr.event.api.common.InvocationCalledFact;
 
 /**
  * @author sibmaks
  * @since 0.0.9
  */
-public interface ScheduledMethodCalledFact {
-    @Name("contextId")
-    @Label("Spring Context Id")
-    String getContextId();
+public interface ScheduledMethodCalledFact extends InvocationCalledFact {
 
-    @Name("invocationId")
-    @Label("Invocation Id")
-    String getInvocationId();
-
-    @Name("className")
-    @Label("Class Name")
-    String getClassName();
-
-    @Name("methodName")
-    @Label("Method Name")
-    String getMethodName();
 }

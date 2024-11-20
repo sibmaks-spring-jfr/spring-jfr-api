@@ -1,4 +1,4 @@
-package io.github.sibmaks.spring.jfr.event.api.jpa;
+package io.github.sibmaks.spring.jfr.event.api.common;
 
 import jdk.jfr.Label;
 import jdk.jfr.Name;
@@ -7,7 +7,7 @@ import jdk.jfr.Name;
  * @author sibmaks
  * @since 0.0.9
  */
-public interface JPAMethodFailedFact {
+public interface InvocationFailedFact {
     @Name("invocationId")
     @Label("Invocation Id")
     String getInvocationId();

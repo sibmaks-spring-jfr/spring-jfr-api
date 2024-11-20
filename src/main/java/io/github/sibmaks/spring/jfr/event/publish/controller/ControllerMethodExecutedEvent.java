@@ -1,6 +1,6 @@
 package io.github.sibmaks.spring.jfr.event.publish.controller;
 
-import io.github.sibmaks.spring.jfr.event.api.controller.ControllerMethodExecutedFact;
+import io.github.sibmaks.spring.jfr.event.api.common.InvocationExecutedFact;
 import io.github.sibmaks.spring.jfr.event.constant.Categories;
 import jdk.jfr.Category;
 import jdk.jfr.Event;
@@ -18,6 +18,6 @@ import lombok.Setter;
 @StackTrace(false)
 @Category(Categories.CONTROLLER)
 @Label("Controller Method Executed Event")
-public class ControllerMethodExecutedEvent extends Event implements ControllerMethodExecutedFact {
+public class ControllerMethodExecutedEvent extends Event implements InvocationExecutedFact {
     private final String invocationId;
 }
