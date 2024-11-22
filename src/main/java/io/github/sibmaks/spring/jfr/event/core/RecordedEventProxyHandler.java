@@ -25,7 +25,10 @@ public class RecordedEventProxyHandler<T> implements InvocationHandler {
             if ("toString".equals(method.getName()) && method.getParameterCount() == 0) {
                 return "Proxy for " + type.getName();
             }
-            return method.invoke(proxy, args);
+            if (method.isDefault()) {
+                return method.invoke(proxy, args);
+            }
+            throw new IllegalArgumentException("Unknown method " + method);
         }
         return event.getValue(key);
     }

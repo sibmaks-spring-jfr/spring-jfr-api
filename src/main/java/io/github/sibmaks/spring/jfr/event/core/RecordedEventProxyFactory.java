@@ -81,6 +81,7 @@ public class RecordedEventProxyFactory {
         }
         var methods = new HashSet<Method>();
         methods.addAll(List.of(type.getDeclaredMethods()));
+        methods.addAll(List.of(type.getMethods()));
         methods.addAll(getDeclaredMethods(type.getSuperclass()));
         return methods;
     }
