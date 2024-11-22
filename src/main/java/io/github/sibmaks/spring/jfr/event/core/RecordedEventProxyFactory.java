@@ -35,7 +35,7 @@ public class RecordedEventProxyFactory {
             throw new IllegalArgumentException("Target type cannot be null");
         }
 
-        var methods = type.getDeclaredMethods();
+        var methods = getDeclaredMethods(type);
         var methods2Name = new HashMap<Method, String>();
 
         for (var method : methods) {
@@ -49,17 +49,12 @@ public class RecordedEventProxyFactory {
         var classLoader = type.getClassLoader();
         var interfaces = getInterfaces(type).toArray(Class[]::new);
 
+        var handler = new RecordedEventProxyHandler<T>(methods2Name, event, type);
         try {
             return (T) Proxy.newProxyInstance(
                     classLoader,
                     interfaces,
-                    (proxy, method, args) -> {
-                        var key = methods2Name.get(method);
-                        if (key == null) {
-                            return method.invoke(proxy, args);
-                        }
-                        return event.getValue(key);
-                    }
+                    handler
             );
         } catch (Exception e) {
             throw new ConversionException("Error converting RecordedEvent to " + type.getName(), e);
@@ -80,6 +75,15 @@ public class RecordedEventProxyFactory {
         return interfaces;
     }
 
+    private Set<Method> getDeclaredMethods(Class<?> type) {
+        if (type == null) {
+            return Set.of();
+        }
+        var methods = new HashSet<Method>();
+        methods.addAll(List.of(type.getDeclaredMethods()));
+        methods.addAll(getDeclaredMethods(type.getSuperclass()));
+        return methods;
+    }
 
     /**
      * Custom exception for conversion errors.
