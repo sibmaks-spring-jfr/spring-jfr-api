@@ -1,14 +1,12 @@
 package io.github.sibmaks.spring.jfr.event.core;
 
+import io.github.sibmaks.spring.jfr.event.utils.ReflectionUtils;
 import jdk.jfr.Name;
 import jdk.jfr.consumer.RecordedEvent;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 /**
  * Converter to transform RecordedEvent into a specified type.
@@ -35,7 +33,7 @@ public class RecordedEventProxyFactory {
             throw new IllegalArgumentException("Target type cannot be null");
         }
 
-        var methods = getDeclaredMethods(type);
+        var methods = ReflectionUtils.getMethods(type);
         var methods2Name = new HashMap<Method, String>();
 
         for (var method : methods) {
@@ -47,7 +45,7 @@ public class RecordedEventProxyFactory {
         }
 
         var classLoader = type.getClassLoader();
-        var interfaces = getInterfaces(type).toArray(Class[]::new);
+        var interfaces = ReflectionUtils.getInterfaces(type).toArray(Class[]::new);
 
         var handler = new RecordedEventProxyHandler<T>(methods2Name, event, type);
         try {
@@ -59,31 +57,6 @@ public class RecordedEventProxyFactory {
         } catch (Exception e) {
             throw new ConversionException("Error converting RecordedEvent to " + type.getName(), e);
         }
-    }
-
-    private <T> Set<Class<?>> getInterfaces(Class<T> type) {
-        if (type == null) {
-            return Set.of();
-        }
-        var interfaces = new HashSet<Class<?>>();
-        if (type.isInterface()) {
-            interfaces.add(type);
-        } else {
-            interfaces.addAll(List.of(type.getInterfaces()));
-            interfaces.addAll(getInterfaces(type.getSuperclass()));
-        }
-        return interfaces;
-    }
-
-    private Set<Method> getDeclaredMethods(Class<?> type) {
-        if (type == null) {
-            return Set.of();
-        }
-        var methods = new HashSet<Method>();
-        methods.addAll(List.of(type.getDeclaredMethods()));
-        methods.addAll(List.of(type.getMethods()));
-        methods.addAll(getDeclaredMethods(type.getSuperclass()));
-        return methods;
     }
 
     /**
