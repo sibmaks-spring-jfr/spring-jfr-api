@@ -1,6 +1,7 @@
-package io.github.sibmaks.spring.jfr.event.controller;
+package io.github.sibmaks.spring.jfr.event.publish.controller;
 
-import io.github.sibmaks.spring.jfr.event.constant.Constants;
+import io.github.sibmaks.spring.jfr.event.api.controller.ControllerMethodCalledFact;
+import io.github.sibmaks.spring.jfr.event.constant.Categories;
 import jdk.jfr.Category;
 import jdk.jfr.Event;
 import jdk.jfr.Label;
@@ -14,20 +15,15 @@ import lombok.Setter;
 @Getter
 @Builder
 @AllArgsConstructor
-@StackTrace(false)
-@Category(Constants.CATEGORY_CONTROLLER)
+@StackTrace
+@Category(Categories.CONTROLLER)
 @Label("Controller Method Called Event")
-public class ControllerMethodCalledEvent extends Event {
-    @Label("Invocation Id")
+public class ControllerMethodCalledEvent extends Event implements ControllerMethodCalledFact {
+    private final String contextId;
     private final String invocationId;
-    @Label("Class Name")
     private final String className;
-    @Label("Method Name")
     private final String methodName;
-    @Label("Method")
-    private final String method;
-    @Label("URL")
+    private final String httpMethod;
     private final String url;
-    @Label("Rest")
     private final boolean rest;
 }

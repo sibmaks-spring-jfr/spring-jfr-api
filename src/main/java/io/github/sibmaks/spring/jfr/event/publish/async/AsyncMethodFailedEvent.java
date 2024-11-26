@@ -1,6 +1,7 @@
-package io.github.sibmaks.spring.jfr.event.scheduled;
+package io.github.sibmaks.spring.jfr.event.publish.async;
 
-import io.github.sibmaks.spring.jfr.event.constant.Constants;
+import io.github.sibmaks.spring.jfr.event.api.common.InvocationExecutedFact;
+import io.github.sibmaks.spring.jfr.event.constant.Categories;
 import jdk.jfr.Category;
 import jdk.jfr.Event;
 import jdk.jfr.Label;
@@ -15,13 +16,10 @@ import lombok.Setter;
 @Builder
 @AllArgsConstructor
 @StackTrace(false)
-@Category(Constants.CATEGORY_SCHEDULED)
-@Label("Scheduled Method Failed Event")
-public class ScheduledMethodFailedEvent extends Event {
-    @Label("Invocation Id")
+@Category(Categories.ASYNC)
+@Label("Async Method Called Event")
+public class AsyncMethodFailedEvent extends Event implements InvocationExecutedFact {
     private final String invocationId;
-    @Label("Exception Class")
     private final String exceptionClass;
-    @Label("Exception Message")
     private final String exceptionMessage;
 }

@@ -1,6 +1,7 @@
-package io.github.sibmaks.spring.jfr.event.scheduled;
+package io.github.sibmaks.spring.jfr.event.publish.scheduled;
 
-import io.github.sibmaks.spring.jfr.event.constant.Constants;
+import io.github.sibmaks.spring.jfr.event.api.scheduled.ScheduledMethodCalledFact;
+import io.github.sibmaks.spring.jfr.event.constant.Categories;
 import jdk.jfr.Category;
 import jdk.jfr.Event;
 import jdk.jfr.Label;
@@ -14,14 +15,12 @@ import lombok.Setter;
 @Getter
 @Builder
 @AllArgsConstructor
-@StackTrace(false)
-@Category(Constants.CATEGORY_SCHEDULED)
+@StackTrace
+@Category(Categories.SCHEDULED)
 @Label("Scheduled Method Invoked Event")
-public class ScheduledMethodInvokedEvent extends Event {
-    @Label("Invocation Id")
+public class ScheduledMethodCalledEvent extends Event implements ScheduledMethodCalledFact {
+    private final String contextId;
     private final String invocationId;
-    @Label("Class Name")
     private final String className;
-    @Label("Method Name")
     private final String methodName;
 }
