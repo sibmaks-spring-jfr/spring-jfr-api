@@ -14,4 +14,6 @@ public final class Categories {
     public static final String BEAN = "Spring Beans Flight Recorder";
     public static final String SCHEDULED = "Spring Scheduled Flight Recorder";
     public static final String JPA = "Spring JPA Flight Recorder";
+    public static final String SERVICE = "Spring Service Flight Recorder";
+    public static final String COMPONENT = "Spring Component Flight Recorder";
 }
