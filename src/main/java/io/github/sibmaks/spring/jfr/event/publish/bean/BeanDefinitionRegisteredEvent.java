@@ -10,8 +10,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
-import java.time.Instant;
-
 /**
  * @author sibmaks
  * @since 0.0.1
@@ -29,5 +27,6 @@ public class BeanDefinitionRegisteredEvent extends Event implements BeanDefiniti
     private final String beanName;
     private final String primary;
     private final String dependencies;
+    private final String stereotype;
     private final boolean generated;
 }

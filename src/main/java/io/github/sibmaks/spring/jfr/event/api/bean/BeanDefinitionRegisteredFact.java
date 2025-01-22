@@ -37,8 +37,17 @@ public interface BeanDefinitionRegisteredFact {
     @Label("Bean generated flag")
     boolean isGenerated();
 
+    @Name("stereotype")
+    @Label("Bean's stereotype")
+    String getStereotype();
+
     default String[] getDependenciesAsArray() {
         var dependencies = getDependencies();
         return DependencyConverter.convert(dependencies);
+    }
+
+    default Stereotype getStereotypeAsEnum() {
+        var stereotype = getStereotype();
+        return Stereotype.valueOf(stereotype);
     }
 }

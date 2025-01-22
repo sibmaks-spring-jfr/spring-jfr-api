@@ -27,5 +27,6 @@ public class MergedBeanDefinitionRegisteredEvent extends Event implements Merged
     private final String beanName;
     private final String primary;
     private final String dependencies;
+    private final String stereotype;
     private final boolean generated;
 }
