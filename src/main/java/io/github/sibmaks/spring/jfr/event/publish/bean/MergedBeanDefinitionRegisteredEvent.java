@@ -23,6 +23,7 @@ import lombok.Getter;
 public class MergedBeanDefinitionRegisteredEvent extends Event implements MergedBeanDefinitionRegisteredFact {
     private final String contextId;
     private final String scope;
+    private final String actualBeanClassName;
     private final String beanClassName;
     private final String beanName;
     private final String primary;

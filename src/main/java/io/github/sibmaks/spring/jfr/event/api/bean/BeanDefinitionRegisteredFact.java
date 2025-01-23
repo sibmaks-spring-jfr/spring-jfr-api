@@ -17,6 +17,20 @@ public interface BeanDefinitionRegisteredFact {
     @Label("Bean scope")
     String getScope();
 
+    /**
+     * Bean class name from BeanDefinition, can be different from actual bean class name
+     *
+     * @return runtime class name
+     */
+    @Name("beanClassName")
+    @Label("Bean class name")
+    String getActualBeanClassName();
+
+    /**
+     * Source bean class name
+     *
+     * @return source bean class name
+     */
     @Name("beanClassName")
     @Label("Bean class name")
     String getBeanClassName();

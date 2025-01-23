@@ -24,6 +24,7 @@ public class BeanDefinitionRegisteredEvent extends Event implements BeanDefiniti
     private final String contextId;
     private final String scope;
     private final String beanClassName;
+    private final String actualBeanClassName;
     private final String beanName;
     private final String primary;
     private final String dependencies;
