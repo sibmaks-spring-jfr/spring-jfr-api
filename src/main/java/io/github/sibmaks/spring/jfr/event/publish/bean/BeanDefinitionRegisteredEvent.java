@@ -23,8 +23,8 @@ import lombok.Getter;
 public class BeanDefinitionRegisteredEvent extends Event implements BeanDefinitionRegisteredFact {
     private final String contextId;
     private final String scope;
-    private final String beanClassName;
     private final String actualBeanClassName;
+    private final String beanClassName;
     private final String beanName;
     private final String primary;
     private final String dependencies;
