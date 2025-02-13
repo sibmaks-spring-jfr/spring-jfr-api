@@ -23,6 +23,7 @@ import lombok.Setter;
 @RecordedEventType(ConnectionActionFailedRecordedEvent.class)
 public class ConnectionActionFailedEvent extends Event implements ConnectionActionFailedFact {
     private final String connectionId;
+    private final long actionIndex;
     private final String exceptionClass;
     private final String exceptionMessage;
 }

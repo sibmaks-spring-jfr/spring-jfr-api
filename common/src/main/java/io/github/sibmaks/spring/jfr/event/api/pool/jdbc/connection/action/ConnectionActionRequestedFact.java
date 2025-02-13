@@ -12,6 +12,10 @@ public interface ConnectionActionRequestedFact {
     @Label("Generated Connection Id")
     String getConnectionId();
 
+    @Name("actionIndex")
+    @Label("Action Index")
+    long getActionIndex();
+
     @Name("action")
     @Label("Action")
     String getAction();

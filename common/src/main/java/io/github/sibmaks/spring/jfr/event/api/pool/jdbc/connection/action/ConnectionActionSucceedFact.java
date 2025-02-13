@@ -11,4 +11,8 @@ public interface ConnectionActionSucceedFact {
     @Name("connectionId")
     @Label("Generated Connection Id")
     String getConnectionId();
+
+    @Name("actionIndex")
+    @Label("Action Index")
+    long getActionIndex();
 }

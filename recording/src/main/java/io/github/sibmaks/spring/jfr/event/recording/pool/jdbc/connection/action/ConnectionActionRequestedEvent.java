@@ -21,11 +21,13 @@ import lombok.Setter;
 @RecordedEventType(ConnectionActionRequestedRecordedEvent.class)
 public class ConnectionActionRequestedEvent extends Event implements ConnectionActionRequestedFact {
     private final String connectionId;
+    private final long actionIndex;
     private final String action;
 
     @Builder
-    public ConnectionActionRequestedEvent(String connectionId, ConnectionAction action) {
+    public ConnectionActionRequestedEvent(String connectionId, long actionIndex, ConnectionAction action) {
         this.connectionId = connectionId;
+        this.actionIndex = actionIndex;
         this.action = action.name();
     }
 }

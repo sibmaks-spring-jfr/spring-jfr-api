@@ -19,6 +19,11 @@ public interface ConnectionRequestedFact extends ConnectionActionRequestedFact {
     String getPoolId();
 
     @Override
+    default long getActionIndex() {
+        return 0;
+    }
+
+    @Override
     default String getAction() {
         return ConnectionAction.CREATE.name();
     }

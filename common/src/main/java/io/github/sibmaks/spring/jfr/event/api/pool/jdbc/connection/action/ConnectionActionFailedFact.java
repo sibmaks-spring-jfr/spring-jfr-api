@@ -12,6 +12,10 @@ public interface ConnectionActionFailedFact {
     @Label("Generated Connection Id")
     String getConnectionId();
 
+    @Name("actionIndex")
+    @Label("Action Index")
+    long getActionIndex();
+
     @Name("exceptionClass")
     @Label("Exception Class")
     String getExceptionClass();
