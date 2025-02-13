@@ -1,4 +1,6 @@
 [versions]
+jdk = "11"
+
 lombok = "1.18.34"
 junit-jupiter = "5.10.3"
 
