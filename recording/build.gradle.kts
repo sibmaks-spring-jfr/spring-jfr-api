@@ -72,7 +72,7 @@ publishing {
             pom {
                 packaging = "jar"
                 url = "${project.property("git_url")}"
-                artifactId = "${project.property("project_name")}-recording"
+                artifactId = "recording"
 
                 licenses {
                     license {

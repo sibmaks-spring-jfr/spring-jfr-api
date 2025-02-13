@@ -71,7 +71,7 @@ publishing {
             pom {
                 packaging = "jar"
                 url = "${project.property("git_url")}"
-                artifactId = "${project.property("project_name")}-reading"
+                artifactId = "reading"
 
                 licenses {
                     license {
