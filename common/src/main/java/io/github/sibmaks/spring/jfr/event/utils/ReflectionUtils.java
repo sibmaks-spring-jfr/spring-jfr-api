@@ -22,10 +22,9 @@ public final class ReflectionUtils {
         var interfaces = new HashSet<Class<?>>();
         if (type.isInterface()) {
             interfaces.add(type);
-        } else {
-            interfaces.addAll(List.of(type.getInterfaces()));
-            interfaces.addAll(getInterfaces(type.getSuperclass()));
         }
+        interfaces.addAll(List.of(type.getInterfaces()));
+        interfaces.addAll(getInterfaces(type.getSuperclass()));
         return interfaces;
     }
 

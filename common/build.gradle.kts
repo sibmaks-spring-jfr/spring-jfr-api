@@ -11,7 +11,7 @@ dependencies {
     compileOnly(libs.lombok)
     annotationProcessor(libs.lombok)
 
-    testImplementation(libs.junit.jupiter)
+    testImplementation(libs.bundles.test)
 
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
@@ -37,4 +37,9 @@ java {
 
 tasks.named<Test>("test") {
     useJUnitPlatform()
+    finalizedBy(tasks.jacocoTestReport)
+}
+
+tasks.jacocoTestReport {
+    dependsOn(tasks.test)
 }

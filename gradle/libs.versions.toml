@@ -3,8 +3,15 @@ jdk = "11"
 
 lombok = "1.18.34"
 junit-jupiter = "5.10.3"
+mockito = "5.15.2"
 
 [libraries]
 
 lombok = { module = "org.projectlombok:lombok", version.ref = "lombok" }
 junit-jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "junit-jupiter" }
+mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito" }
+mockito-junit-jupiter = { module = "org.mockito:mockito-junit-jupiter", version.ref = "mockito" }
+
+[bundles]
+test = ["junit-jupiter", "mockito-core", "mockito-junit-jupiter"]
+

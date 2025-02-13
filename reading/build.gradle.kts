@@ -13,7 +13,7 @@ dependencies {
     
     implementation(project(":common"))
 
-    testImplementation(libs.junit.jupiter)
+    testImplementation(libs.bundles.test)
 
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
@@ -39,6 +39,11 @@ java {
 
 tasks.named<Test>("test") {
     useJUnitPlatform()
+    finalizedBy(tasks.jacocoTestReport)
+}
+
+tasks.jacocoTestReport {
+    dependsOn(tasks.test)
 }
 
 tasks.jar {

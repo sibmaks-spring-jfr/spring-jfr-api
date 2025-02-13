@@ -2,6 +2,8 @@ package io.github.sibmaks.spring.jfr.event.recording.jpa;
 
 import io.github.sibmaks.spring.jfr.event.api.jpa.JPAMethodCalledFact;
 import io.github.sibmaks.spring.jfr.event.constant.Categories;
+import io.github.sibmaks.spring.jfr.event.reading.core.recorded.RecordedEventType;
+import io.github.sibmaks.spring.jfr.event.reading.api.jpa.JPAMethodCalledRecordedEvent;
 import jdk.jfr.Category;
 import jdk.jfr.Event;
 import jdk.jfr.Label;
@@ -18,6 +20,7 @@ import lombok.Setter;
 @StackTrace
 @Category(Categories.JPA)
 @Label("JPA Method Invoked Event")
+@RecordedEventType(JPAMethodCalledRecordedEvent.class)
 public class JPAMethodCalledEvent extends Event implements JPAMethodCalledFact {
     private final String contextId;
     private final String correlationId;

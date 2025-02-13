@@ -2,6 +2,8 @@ package io.github.sibmaks.spring.jfr.event.recording.bean;
 
 import io.github.sibmaks.spring.jfr.event.api.bean.ResolveBeanDependencyFact;
 import io.github.sibmaks.spring.jfr.event.constant.Categories;
+import io.github.sibmaks.spring.jfr.event.reading.core.recorded.RecordedEventType;
+import io.github.sibmaks.spring.jfr.event.reading.api.bean.ResolveBeanDependencyRecordedEvent;
 import jdk.jfr.Category;
 import jdk.jfr.Event;
 import jdk.jfr.Label;
@@ -20,6 +22,7 @@ import lombok.Getter;
 @StackTrace(false)
 @Category(Categories.BEAN)
 @Label("Resolve Bean Dependency")
+@RecordedEventType(ResolveBeanDependencyRecordedEvent.class)
 public class ResolveBeanDependencyEvent extends Event implements ResolveBeanDependencyFact {
     private final String contextId;
     private final String dependentBeanName;
