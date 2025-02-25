@@ -10,6 +10,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.UUID;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.*;
@@ -60,5 +62,20 @@ class RecordedEventFactoryTest {
 
         var actual = factory.convert(recordedEvent);
         assertEquals(excepted, actual);
+    }
+
+    @Test
+    void convertBeanEventWhenClassNotExists() {
+        var recordedEvent = mock(RecordedEvent.class);
+
+        var eventType = mock(EventType.class);
+        when(recordedEvent.getEventType())
+                .thenReturn(eventType);
+
+        when(eventType.getName())
+                .thenReturn(UUID.randomUUID().toString());
+
+        var actual = factory.convert(recordedEvent);
+        assertNull(actual);
     }
 }

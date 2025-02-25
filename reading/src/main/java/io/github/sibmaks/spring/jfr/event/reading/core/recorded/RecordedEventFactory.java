@@ -32,7 +32,12 @@ public class RecordedEventFactory {
         var eventType = event.getEventType();
         var eventTypeName = eventType.getName();
         try {
-            var eventTypeClass = Class.forName(eventTypeName);
+            Class<?> eventTypeClass;
+            try {
+                eventTypeClass = Class.forName(eventTypeName);
+            } catch (ClassNotFoundException e) {
+                return null;
+            }
             var eventClass = recorded2readingMap.computeIfAbsent(eventTypeClass, RecordedEventFactory::extractRecordedEventType);
             if (eventClass == null) {
                 return null;
