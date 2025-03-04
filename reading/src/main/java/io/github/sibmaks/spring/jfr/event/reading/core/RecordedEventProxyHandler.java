@@ -48,7 +48,7 @@ public class RecordedEventProxyHandler<T> implements InvocationHandler {
             return "Proxy for " + type.getName();
         }
         if (method.isDefault()) {
-            return method.invoke(proxy, args);
+            return method.invoke(event, args);
         }
         var existingMethod = getExistingMethod(method);
         if (existingMethod != null) {

@@ -25,6 +25,9 @@ public final class ReflectionUtils {
         }
         interfaces.addAll(List.of(type.getInterfaces()));
         interfaces.addAll(getInterfaces(type.getSuperclass()));
+        for (var interfaceType : type.getInterfaces()) {
+            interfaces.addAll(getInterfaces(interfaceType));
+        }
         return interfaces;
     }
 
@@ -36,6 +39,9 @@ public final class ReflectionUtils {
         methods.addAll(List.of(type.getDeclaredMethods()));
         methods.addAll(List.of(type.getMethods()));
         methods.addAll(getMethods(type.getSuperclass()));
+        for (var interfaceType : type.getInterfaces()) {
+            methods.addAll(getMethods(interfaceType));
+        }
         return methods;
     }
 

@@ -47,7 +47,7 @@ public class RecordedEventProxyFactory {
         var classLoader = type.getClassLoader();
         var interfaces = ReflectionUtils.getInterfaces(type).toArray(Class[]::new);
 
-        var handler = new RecordedEventProxyHandler<T>(methods2Name, event, type);
+        var handler = new RecordedEventProxyHandler<>(methods2Name, event, type);
         try {
             return (T) Proxy.newProxyInstance(
                     classLoader,
