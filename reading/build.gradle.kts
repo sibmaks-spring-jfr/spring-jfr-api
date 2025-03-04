@@ -13,6 +13,8 @@ dependencies {
     
     implementation(project(":common"))
 
+    implementation(libs.bytebuddy)
+
     testImplementation(libs.bundles.test)
 
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")

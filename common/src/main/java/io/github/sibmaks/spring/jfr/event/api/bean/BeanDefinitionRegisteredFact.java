@@ -55,11 +55,21 @@ public interface BeanDefinitionRegisteredFact {
     @Label("Bean's stereotype")
     String getStereotype();
 
+    /**
+     * Get dependencies as array
+     *
+     * @return dependency array
+     */
     default String[] getDependenciesAsArray() {
         var dependencies = getDependencies();
         return DependencyConverter.convert(dependencies);
     }
 
+    /**
+     * Get stereotype as enum
+     *
+     * @return stereotype
+     */
     default Stereotype getStereotypeAsEnum() {
         var stereotype = getStereotype();
         return Stereotype.valueOf(stereotype);

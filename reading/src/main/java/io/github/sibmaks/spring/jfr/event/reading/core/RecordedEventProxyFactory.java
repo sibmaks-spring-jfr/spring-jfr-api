@@ -1,12 +1,9 @@
 package io.github.sibmaks.spring.jfr.event.reading.core;
 
-import io.github.sibmaks.spring.jfr.event.utils.ReflectionUtils;
-import jdk.jfr.Name;
 import jdk.jfr.consumer.RecordedEvent;
-
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
-import java.util.HashMap;
+import net.bytebuddy.ByteBuddy;
+import net.bytebuddy.implementation.InvocationHandlerAdapter;
+import net.bytebuddy.matcher.ElementMatchers;
 
 /**
  * Converter to transform RecordedEvent into a specified type.
@@ -33,38 +30,23 @@ public class RecordedEventProxyFactory {
             throw new IllegalArgumentException("Target type cannot be null");
         }
 
-        var methods = ReflectionUtils.getMethods(type);
-        var methods2Name = new HashMap<Method, String>();
+        try (var eventBuilder = new ByteBuddy()
+                .subclass(Object.class)
+                .implement(type)
+                .method(ElementMatchers.any())
+                .intercept(InvocationHandlerAdapter.of(new RecordedEventInvocationHandler<>(event, type)))
+                .make()) {
 
-        for (var method : methods) {
-            var name = method.getAnnotation(Name.class);
-            if (name == null) {
-                continue;
-            }
-            methods2Name.put(method, name.value());
-        }
+            var byteBuddy = eventBuilder
+                    .load(type.getClassLoader())
+                    .getLoaded()
+                    .getDeclaredConstructor()
+                    .newInstance();
 
-        var classLoader = type.getClassLoader();
-        var interfaces = ReflectionUtils.getInterfaces(type).toArray(Class[]::new);
-
-        var handler = new RecordedEventProxyHandler<>(methods2Name, event, type);
-        try {
-            return (T) Proxy.newProxyInstance(
-                    classLoader,
-                    interfaces,
-                    handler
-            );
+            return (T) byteBuddy;
         } catch (Exception e) {
             throw new ConversionException("Error converting RecordedEvent to " + type.getName(), e);
         }
     }
 
-    /**
-     * Custom exception for conversion errors.
-     */
-    public static class ConversionException extends Exception {
-        public ConversionException(String message, Throwable cause) {
-            super(message, cause);
-        }
-    }
 }

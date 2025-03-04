@@ -1,5 +1,6 @@
 package io.github.sibmaks.spring.jfr.event.core.recorded;
 
+import io.github.sibmaks.spring.jfr.event.reading.core.ConversionException;
 import io.github.sibmaks.spring.jfr.event.reading.core.RecordedEventProxyFactory;
 import io.github.sibmaks.spring.jfr.event.reading.core.recorded.RecordedEventFactory;
 import jdk.jfr.EventType;
@@ -12,8 +13,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 /**
@@ -28,7 +28,7 @@ class RecordedEventFactoryTest {
     private RecordedEventFactory factory;
 
     @Test
-    void convertNotSupportedType() throws RecordedEventProxyFactory.ConversionException {
+    void convertNotSupportedType() throws ConversionException {
         var recordedEvent = mock(RecordedEvent.class);
 
         var eventType = mock(EventType.class);
@@ -46,7 +46,7 @@ class RecordedEventFactoryTest {
     }
 
     @Test
-    void convertBeanEvent() throws RecordedEventProxyFactory.ConversionException {
+    void convertBeanEvent() throws ConversionException {
         var recordedEvent = mock(RecordedEvent.class);
 
         var eventType = mock(EventType.class);
@@ -77,5 +77,26 @@ class RecordedEventFactoryTest {
 
         var actual = factory.convert(recordedEvent);
         assertNull(actual);
+    }
+
+    @Test
+    void convertWhenConversionException() throws ConversionException {
+        var recordedEvent = mock(RecordedEvent.class);
+
+        var eventType = mock(EventType.class);
+        when(recordedEvent.getEventType())
+                .thenReturn(eventType);
+
+        var typeName = StubEvent.class.getName();
+        when(eventType.getName())
+                .thenReturn(typeName);
+
+        var childException = new ConversionException(UUID.randomUUID().toString(), new Exception());
+        when(recordedEventProxyFactory.create(recordedEvent, StubRecordedEvent.class))
+                .thenThrow(childException);
+
+        var exception = assertThrows(IllegalArgumentException.class, () -> factory.convert(recordedEvent));
+        assertEquals("Error converting RecordedEvent to " + typeName, exception.getMessage());
+        assertEquals(exception.getCause(), childException);
     }
 }
