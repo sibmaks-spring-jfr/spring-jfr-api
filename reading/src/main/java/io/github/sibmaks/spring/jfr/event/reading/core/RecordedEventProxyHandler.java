@@ -18,14 +18,14 @@ import java.util.Map;
  * @author sibmaks
  * @since 0.0.9
  */
-public class RecordedEventInvocationHandler<T> implements InvocationHandler {
+public class RecordedEventProxyHandler<T> implements InvocationHandler {
     private final RecordedEvent event;
     private final Class<T> type;
     private final Map<String, List<Method>> recordedEventMethods;
     private final Map<Method, String> methods2Name;
     private final Map<Method, MethodHandle> defaultMethods;
 
-    public RecordedEventInvocationHandler(
+    public RecordedEventProxyHandler(
             RecordedEvent event,
             Class<T> type
     ) {

@@ -14,7 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class RecordedEventFactory {
 
     private final RecordedEventProxyFactory recordedEventProxyFactory;
-    private final Map<Class<?>, Class<?>> recorded2readingMap;
+    private final Map<String, Class<?>> recorded2readingMap;
 
     public RecordedEventFactory(RecordedEventProxyFactory recordedEventProxyFactory) {
         this.recordedEventProxyFactory = recordedEventProxyFactory;
@@ -30,7 +30,7 @@ public class RecordedEventFactory {
     public Object convert(RecordedEvent event) {
         var eventType = event.getEventType();
         var eventTypeName = eventType.getName();
-        var eventClass = getaClass(eventTypeName);
+        var eventClass = getClass(eventTypeName);
         if (eventClass == null) return null;
         try {
             return recordedEventProxyFactory.create(event, eventClass);
@@ -39,14 +39,16 @@ public class RecordedEventFactory {
         }
     }
 
-    private Class<?> getaClass(String typeName) {
-        Class<?> type;
-        try {
-            type = Class.forName(typeName);
-        } catch (ClassNotFoundException e) {
-            return null;
-        }
-        return recorded2readingMap.computeIfAbsent(type, RecordedEventFactory::extractRecordedEventType);
+    private Class<?> getClass(String typeName) {
+        return recorded2readingMap.computeIfAbsent(typeName, it -> {
+            Class<?> type;
+            try {
+                type = Class.forName(typeName);
+            } catch (ClassNotFoundException e) {
+                return null;
+            }
+            return extractRecordedEventType(type);
+        });
     }
 
 }

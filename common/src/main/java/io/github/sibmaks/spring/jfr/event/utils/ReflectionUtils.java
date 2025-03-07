@@ -14,6 +14,33 @@ import java.util.stream.Collectors;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public final class ReflectionUtils {
 
+    public static <T> List<Class<?>> getInterfaces(Class<T> type) {
+        if (type == null) {
+            return List.of();
+        }
+        var interfaces = new ArrayList<Class<?>>();
+        if (type.isInterface()) {
+            interfaces.add(type);
+        }
+        var typeInterfaces = type.getInterfaces();
+        addUnique(Arrays.asList(typeInterfaces), interfaces);
+        var superInterfaces = getInterfaces(type.getSuperclass());
+        addUnique(superInterfaces, interfaces);
+        for (var interfaceType : typeInterfaces) {
+            var parentInterfaces = getInterfaces(interfaceType);
+            addUnique(parentInterfaces, interfaces);
+        }
+        return interfaces;
+    }
+
+    private static void addUnique(List<Class<?>> superInterfaces, ArrayList<Class<?>> interfaces) {
+        for (var anInterface : superInterfaces) {
+            if (!interfaces.contains(anInterface)) {
+                interfaces.add(anInterface);
+            }
+        }
+    }
+
     public static Set<Method> getMethods(Class<?> type) {
         if (type == null) {
             return Set.of();
