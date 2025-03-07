@@ -24,7 +24,7 @@ class RecordedEventProxyFactoryTest {
     private RecordedEventProxyFactory factory;
 
     @Test
-    void createParentProxy() throws ConversionException, NoSuchMethodException {
+    void createParentProxy() throws NoSuchMethodException {
         var event = mock(RecordedEvent.class);
 
         var startTime = Instant.now();
@@ -42,6 +42,9 @@ class RecordedEventProxyFactoryTest {
 
         var actualReturnSomething = parent.returnSomething();
         assertEquals(returnSomething, actualReturnSomething);
+
+        var actualReturnSomething2nd = parent.returnSomething();
+        assertEquals(returnSomething, actualReturnSomething2nd);
 
         var exception = assertThrows(IllegalArgumentException.class, parent::doSomething);
         var doSomethingMethod = Parent.class.getDeclaredMethod("doSomething");
@@ -65,7 +68,7 @@ class RecordedEventProxyFactoryTest {
     }
 
     @Test
-    void createChildProxy() throws ConversionException {
+    void createChildProxy() {
         var event = mock(RecordedEvent.class);
 
         var startTime = Instant.now();
@@ -79,6 +82,11 @@ class RecordedEventProxyFactoryTest {
 
         var actualReturnSomething = child.returnSomething();
         assertNotNull(actualReturnSomething);
+
+        var actualReturnSomething2nd = child.returnSomething();
+        assertNotNull(actualReturnSomething2nd);
+
+        assertNotEquals(actualReturnSomething, actualReturnSomething2nd);
 
         try {
             child.doSomething();
@@ -107,16 +115,6 @@ class RecordedEventProxyFactoryTest {
         assertEquals("Target type cannot be null", exception.getMessage());
     }
 
-    @Test
-    void create_whenTargetTypeIsNotInterface_throwsConversionException() {
-        var event = mock(RecordedEvent.class);
-
-        var exception = assertThrows(ConversionException.class, () ->
-                factory.create(event, NonInterfaceTarget.class)
-        );
-        assertEquals("Error converting RecordedEvent to " + NonInterfaceTarget.class.getName(), exception.getMessage());
-    }
-
     public interface Parent {
         void doSomething();
 
@@ -142,13 +140,6 @@ class RecordedEventProxyFactoryTest {
         @Override
         default String toString(String value) {
             return value;
-        }
-    }
-
-    static class NonInterfaceTarget {
-        @SuppressWarnings("unused")
-        public String getValue() {
-            return "test";
         }
     }
 }

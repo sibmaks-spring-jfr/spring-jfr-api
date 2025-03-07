@@ -25,7 +25,6 @@ public class RecordedEventProxyFactory {
      * @param type  the target class type
      * @param <T>   the type parameter
      * @return an instance of type T populated with event data
-     * @throws ConversionException if the conversion fails
      */
     public <T> T create(RecordedEvent event, Class<T> type) {
         if (event == null) {
@@ -45,15 +44,11 @@ public class RecordedEventProxyFactory {
 
         return recordedEvent -> {
             var handler = new RecordedEventProxyHandler<>(recordedEvent, type);
-            try {
-                return (T) Proxy.newProxyInstance(
-                        classLoader,
-                        interfaces,
-                        handler
-                );
-            } catch (Exception e) {
-                throw new ConversionException("Error converting RecordedEvent to " + type.getName(), e);
-            }
+            return (T) Proxy.newProxyInstance(
+                    classLoader,
+                    interfaces,
+                    handler
+            );
         };
     }
 

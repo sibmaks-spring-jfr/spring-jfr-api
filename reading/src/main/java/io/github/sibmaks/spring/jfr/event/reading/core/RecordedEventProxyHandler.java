@@ -10,9 +10,9 @@ import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author sibmaks
@@ -24,6 +24,7 @@ public class RecordedEventProxyHandler<T> implements InvocationHandler {
     private final Map<String, List<Method>> recordedEventMethods;
     private final Map<Method, String> methods2Name;
     private final Map<Method, MethodHandle> defaultMethods;
+    private final Map<Method, InvocationHandler> cachedMethods;
 
     public RecordedEventProxyHandler(
             RecordedEvent event,
@@ -32,8 +33,9 @@ public class RecordedEventProxyHandler<T> implements InvocationHandler {
         this.event = event;
         this.type = type;
         this.recordedEventMethods = ReflectionUtils.getMethodsOverloads(event.getClass());
-        this.methods2Name = new HashMap<>();
-        this.defaultMethods = new HashMap<>();
+        this.methods2Name = new ConcurrentHashMap<>();
+        this.defaultMethods = new ConcurrentHashMap<>();
+        this.cachedMethods = new ConcurrentHashMap<>();
     }
 
     @SneakyThrows
@@ -54,26 +56,41 @@ public class RecordedEventProxyHandler<T> implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        var methodHandler = cachedMethods.get(method);
+        if (methodHandler != null) {
+            return methodHandler.invoke(proxy, method, args);
+        }
         if ("toString".equals(method.getName()) && method.getParameterCount() == 0) {
-            return "Proxy for " + type.getName();
-        }
-        if (method.isDefault()) {
-            return invokeDefaultMethod(proxy, method, args);
-        }
-        var recordedEventMethod = ReflectionUtils.getOverload(recordedEventMethods, method);
-        if (recordedEventMethod != null) {
-            return recordedEventMethod.invoke(event, args);
-        }
-        var key = methods2Name.computeIfAbsent(method, it -> {
-            var name = it.getAnnotation(Name.class);
-            if(name == null) {
-                return null;
+            methodHandler = this::toStringMethodHandler;
+        } else if (method.isDefault()) {
+            methodHandler = this::invokeDefaultMethod;
+        } else {
+            var recordedEventMethod = ReflectionUtils.getOverload(recordedEventMethods, method);
+            if (recordedEventMethod != null) {
+                methodHandler = (_proxy, _method, _args) -> recordedEventMethod.invoke(event, _args);
+            } else {
+                var key = methods2Name.computeIfAbsent(method, it -> {
+                    var name = it.getAnnotation(Name.class);
+                    if (name == null) {
+                        return null;
+                    }
+                    return name.value();
+                });
+                if (key != null) {
+                    methodHandler = (_proxy, _method, _args) -> event.getValue(key);
+                } else {
+                    methodHandler = (_proxy, _method, _args) -> {
+                        throw new IllegalArgumentException("Unknown method " + method);
+                    };
+                }
             }
-            return name.value();
-        });
-        if (key != null) {
-            return event.getValue(key);
         }
-        throw new IllegalArgumentException("Unknown method " + method);
+        cachedMethods.put(method, methodHandler);
+        return methodHandler.invoke(proxy, method, args);
     }
+
+    private String toStringMethodHandler(Object proxy, Method method, Object[] args) {
+        return "Proxy for " + type.getName();
+    }
+
 }
