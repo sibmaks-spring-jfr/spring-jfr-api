@@ -27,6 +27,7 @@ import lombok.Setter;
 @RecordedEventType(KafkaConsumerCreatedRecordedEvent.class)
 public class KafkaConsumerCreatedEvent extends Event implements KafkaConsumerCreatedFact {
     private final String contextId;
+    private final String consumerFactory;
     private final String consumerId;
     private final String bootstrapServers;
     private final String consumerGroup;

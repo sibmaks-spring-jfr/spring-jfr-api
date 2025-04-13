@@ -14,6 +14,10 @@ public interface KafkaConsumerCreatedFact {
     @Label("Spring Context Id")
     String getContextId();
 
+    @Name("consumerFactory")
+    @Label("Consumer Factory Name")
+    String getConsumerFactory();
+
     @Name("consumerId")
     @Label("Consumer Id")
     String getConsumerId();
