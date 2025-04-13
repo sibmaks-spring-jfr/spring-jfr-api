@@ -15,6 +15,7 @@ public final class Categories {
     public static final String SCHEDULED = "Spring Scheduled Flight Recorder";
     public static final String JPA = "Spring JPA Flight Recorder";
     public static final String POOL_JDBC = "Spring Pool JDBC Flight Recorder";
+    public static final String KAFKA_CONSUMER = "Spring Kafka Consumer Flight Recorder";
     public static final String SERVICE = "Spring Service Flight Recorder";
     public static final String COMPONENT = "Spring Component Flight Recorder";
 }

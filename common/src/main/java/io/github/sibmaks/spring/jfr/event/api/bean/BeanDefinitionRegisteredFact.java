@@ -1,6 +1,6 @@
 package io.github.sibmaks.spring.jfr.event.api.bean;
 
-import io.github.sibmaks.spring.jfr.event.core.converter.DependencyConverter;
+import io.github.sibmaks.spring.jfr.event.core.converter.ArrayConverter;
 import jdk.jfr.Label;
 import jdk.jfr.Name;
 
@@ -62,7 +62,7 @@ public interface BeanDefinitionRegisteredFact {
      */
     default String[] getDependenciesAsArray() {
         var dependencies = getDependencies();
-        return DependencyConverter.convert(dependencies);
+        return ArrayConverter.convert(dependencies);
     }
 
     /**

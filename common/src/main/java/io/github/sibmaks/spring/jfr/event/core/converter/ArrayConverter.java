@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
  * @since 0.0.4
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public final class DependencyConverter {
+public final class ArrayConverter {
 
     /**
      * Convert string array to string

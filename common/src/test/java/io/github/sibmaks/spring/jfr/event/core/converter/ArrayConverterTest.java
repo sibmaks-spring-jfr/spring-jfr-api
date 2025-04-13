@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * @author sibmaks
  * @since 0.0.15
  */
-class DependencyConverterTest {
+class ArrayConverterTest {
 
     public static Stream<Arguments> convertArrayToLineCases() {
         return Stream.of(
@@ -35,13 +35,13 @@ class DependencyConverterTest {
     @ParameterizedTest
     @MethodSource("convertArrayToLineCases")
     void convertArrayToLine(String[] dependencies, String expected) {
-        assertEquals(expected, DependencyConverter.convert(dependencies));
+        assertEquals(expected, ArrayConverter.convert(dependencies));
     }
 
     @ParameterizedTest
     @MethodSource("convertLineToArrayCases")
     void convertLineToArray(String dependencies, String[] expected) {
-        assertArrayEquals(expected, DependencyConverter.convert(dependencies));
+        assertArrayEquals(expected, ArrayConverter.convert(dependencies));
     }
 
 }

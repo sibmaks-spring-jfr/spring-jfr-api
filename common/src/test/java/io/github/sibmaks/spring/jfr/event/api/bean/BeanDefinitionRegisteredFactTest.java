@@ -1,6 +1,6 @@
 package io.github.sibmaks.spring.jfr.event.api.bean;
 
-import io.github.sibmaks.spring.jfr.event.core.converter.DependencyConverter;
+import io.github.sibmaks.spring.jfr.event.core.converter.ArrayConverter;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -33,9 +33,9 @@ class BeanDefinitionRegisteredFactTest {
         var dependencyArray = new String[]{
                 UUID.randomUUID().toString(),
         };
-        try (var dependencyConverterUtils = mockStatic(DependencyConverter.class)) {
+        try (var dependencyConverterUtils = mockStatic(ArrayConverter.class)) {
             dependencyConverterUtils.when(() ->
-                    DependencyConverter.convert(dependencies)
+                    ArrayConverter.convert(dependencies)
             ).thenReturn(dependencyArray);
 
             when(fact.getDependenciesAsArray())

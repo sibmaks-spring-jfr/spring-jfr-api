@@ -39,6 +39,7 @@ public interface RecordedData {
      * Returns the start time of the event.
      * <p>
      * If the event is an instant event, then the start time and end time are the same.
+     * </p>
      *
      * @return the start time, not {@code null}
      */
@@ -48,6 +49,7 @@ public interface RecordedData {
      * Returns the end time of the event.
      * <p>
      * If the event is an instant event, then the start time and end time are the same.
+     * </p>
      *
      * @return the end time, not {@code null}
      */
