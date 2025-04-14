@@ -8,5 +8,12 @@ public enum ConnectionAction {
     CREATE,
     CLOSE,
     COMMIT,
-    ROLLBACK
+    ROLLBACK,
+
+    EXECUTE,
+    EXECUTE_QUERY,
+    EXECUTE_UPDATE,
+    EXECUTE_BATCH,
+    EXECUTE_LARGE_UPDATE,
+    EXECUTE_LARGE_BATCH,
 }
