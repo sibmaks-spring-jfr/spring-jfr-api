@@ -2,7 +2,7 @@ package io.github.sibmaks.spring.jfr.event.recording.kafka.consumer.commit;
 
 import io.github.sibmaks.spring.jfr.event.api.kafka.consumer.commit.KafkaConsumerCommitFact;
 import io.github.sibmaks.spring.jfr.event.constant.Categories;
-import io.github.sibmaks.spring.jfr.event.reading.api.kafka.consumer.commit.KafkaConsumerCommitedRecordedEvent;
+import io.github.sibmaks.spring.jfr.event.reading.api.kafka.consumer.commit.KafkaConsumerCommitRecordedEvent;
 import io.github.sibmaks.spring.jfr.event.reading.core.recorded.RecordedEventType;
 import jdk.jfr.Category;
 import jdk.jfr.Event;
@@ -24,7 +24,7 @@ import lombok.Setter;
 @StackTrace(value = false)
 @Category(Categories.KAFKA_CONSUMER)
 @Label("Kafka Consumer Commit")
-@RecordedEventType(KafkaConsumerCommitedRecordedEvent.class)
+@RecordedEventType(KafkaConsumerCommitRecordedEvent.class)
 public class KafkaConsumerCommitEvent extends Event implements KafkaConsumerCommitFact {
     private final String consumerId;
     private final String commitId;
