@@ -47,6 +47,9 @@ public final class ArrayConverter {
         }
         var lines = values.split("\n", 2);
         var count = Integer.parseInt(lines[0]);
+        if(count <= 0) {
+            return new String[0];
+        }
         var remaining = lines[1];
 
         var dependencies = new String[count];

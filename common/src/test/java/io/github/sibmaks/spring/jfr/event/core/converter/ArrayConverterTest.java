@@ -27,6 +27,7 @@ class ArrayConverterTest {
     public static Stream<Arguments> convertLineToArrayCases() {
         return Stream.of(
                 Arguments.of(null, new String[0]),
+                Arguments.of("0", new String[0]),
                 Arguments.of("1\n5 hello", new String[]{"hello"}),
                 Arguments.of("2\n5 hello\n9 everybody", new String[]{"hello", "everybody"})
         );

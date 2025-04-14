@@ -22,7 +22,7 @@ public interface BeanDefinitionRegisteredFact {
      *
      * @return runtime class name
      */
-    @Name("beanClassName")
+    @Name("actualBeanClassName")
     @Label("Bean class name")
     String getActualBeanClassName();
 

@@ -2,8 +2,6 @@ package io.github.sibmaks.spring.jfr.event.recording.kafka.consumer;
 
 import io.github.sibmaks.spring.jfr.event.api.kafka.consumer.KafkaConsumerCreatedFact;
 import io.github.sibmaks.spring.jfr.event.constant.Categories;
-import io.github.sibmaks.spring.jfr.event.reading.api.kafka.consumer.KafkaConsumerCreatedRecordedEvent;
-import io.github.sibmaks.spring.jfr.event.reading.core.recorded.RecordedEventType;
 import jdk.jfr.Category;
 import jdk.jfr.Event;
 import jdk.jfr.Label;
@@ -24,7 +22,7 @@ import lombok.Setter;
 @StackTrace(value = false)
 @Category(Categories.KAFKA_CONSUMER)
 @Label("Kafka Consumer Created Event")
-@RecordedEventType(KafkaConsumerCreatedRecordedEvent.class)
+
 public class KafkaConsumerCreatedEvent extends Event implements KafkaConsumerCreatedFact {
     private final String contextId;
     private final String consumerFactory;

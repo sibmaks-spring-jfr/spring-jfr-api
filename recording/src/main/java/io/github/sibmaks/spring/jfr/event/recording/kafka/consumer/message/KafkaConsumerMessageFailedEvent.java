@@ -2,8 +2,6 @@ package io.github.sibmaks.spring.jfr.event.recording.kafka.consumer.message;
 
 import io.github.sibmaks.spring.jfr.event.api.kafka.consumer.message.KafkaConsumerMessageFailedFact;
 import io.github.sibmaks.spring.jfr.event.constant.Categories;
-import io.github.sibmaks.spring.jfr.event.reading.api.kafka.consumer.message.KafkaConsumerMessageFailedRecordedEvent;
-import io.github.sibmaks.spring.jfr.event.reading.core.recorded.RecordedEventType;
 import jdk.jfr.Category;
 import jdk.jfr.Event;
 import jdk.jfr.Label;
@@ -24,7 +22,7 @@ import lombok.Setter;
 @StackTrace(value = false)
 @Category(Categories.KAFKA_CONSUMER)
 @Label("Kafka Consumer Message Processing Failed")
-@RecordedEventType(KafkaConsumerMessageFailedRecordedEvent.class)
+
 public class KafkaConsumerMessageFailedEvent extends Event implements KafkaConsumerMessageFailedFact {
     private final String messageId;
     private final String exceptionClass;

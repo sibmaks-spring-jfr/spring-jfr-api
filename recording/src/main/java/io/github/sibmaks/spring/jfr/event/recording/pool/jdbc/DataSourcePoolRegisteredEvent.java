@@ -2,8 +2,6 @@ package io.github.sibmaks.spring.jfr.event.recording.pool.jdbc;
 
 import io.github.sibmaks.spring.jfr.event.api.pool.jdbc.DataSourcePoolRegisteredFact;
 import io.github.sibmaks.spring.jfr.event.constant.Categories;
-import io.github.sibmaks.spring.jfr.event.reading.core.recorded.RecordedEventType;
-import io.github.sibmaks.spring.jfr.event.reading.api.pool.jdbc.DataSourcePoolRegisteredRecordedEvent;
 import jdk.jfr.Category;
 import jdk.jfr.Event;
 import jdk.jfr.Label;
@@ -20,7 +18,7 @@ import lombok.Setter;
 @StackTrace
 @Category(Categories.POOL_JDBC)
 @Label("Data Source Pool Registered Event")
-@RecordedEventType(DataSourcePoolRegisteredRecordedEvent.class)
+
 public class DataSourcePoolRegisteredEvent extends Event implements DataSourcePoolRegisteredFact {
     private final String contextId;
     private final String poolId;

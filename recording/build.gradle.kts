@@ -12,7 +12,6 @@ dependencies {
     annotationProcessor(libs.lombok)
     
     implementation(project(":common"))
-    implementation(project(":reading"))
 
     testImplementation(libs.bundles.test)
 
