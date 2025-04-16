@@ -17,9 +17,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @StackTrace(false)
 @Category(Categories.CONTROLLER)
-@Label("Controller Method Failed Event")
-
-public class ControllerMethodFailedEvent extends Event implements InvocationFailedFact {
+@Label("Controller Method Failed Event")public class ControllerMethodFailedEvent extends Event implements InvocationFailedFact {
     private final String invocationId;
     private final String exceptionClass;
     private final String exceptionMessage;

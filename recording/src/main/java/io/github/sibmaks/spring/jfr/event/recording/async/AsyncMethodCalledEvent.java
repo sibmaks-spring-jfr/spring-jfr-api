@@ -12,7 +12,7 @@ import lombok.Setter;
 @Getter
 @Builder
 @AllArgsConstructor
-@StackTrace
+@StackTrace(false)
 @Category(Categories.ASYNC)
 @Label("Async Method Called Event")
 public class AsyncMethodCalledEvent extends Event implements AsyncMethodCalledFact {

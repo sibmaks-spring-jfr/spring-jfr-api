@@ -17,9 +17,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @StackTrace(false)
 @Category(Categories.JPA)
-@Label("JPA Method Failed Event")
-
-public class JPAMethodFailedEvent extends Event implements InvocationFailedFact {
+@Label("JPA Method Failed Event")public class JPAMethodFailedEvent extends Event implements InvocationFailedFact {
     private final String invocationId;
     private final String exceptionClass;
     private final String exceptionMessage;

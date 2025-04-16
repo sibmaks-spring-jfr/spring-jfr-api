@@ -15,11 +15,9 @@ import lombok.Setter;
 @Getter
 @Builder
 @AllArgsConstructor
-@StackTrace
+@StackTrace(false)
 @Category(Categories.POOL_JDBC)
-@Label("Connection Transaction Level Set Event")
-
-public class ConnectionTransactionLevelSetEvent extends Event implements ConnectionTransactionLevelSetFact {
+@Label("Connection Transaction Level Set Event")public class ConnectionTransactionLevelSetEvent extends Event implements ConnectionTransactionLevelSetFact {
     private final String connectionId;
     private final int transactionLevel;
 }

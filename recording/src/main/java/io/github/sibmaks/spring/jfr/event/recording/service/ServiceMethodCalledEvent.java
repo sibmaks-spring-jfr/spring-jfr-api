@@ -15,11 +15,9 @@ import lombok.Setter;
 @Getter
 @Builder
 @AllArgsConstructor
-@StackTrace
+@StackTrace(false)
 @Category(Categories.SERVICE)
-@Label("Service Method Invoked Event")
-
-public class ServiceMethodCalledEvent extends Event implements ServiceMethodCalledFact {
+@Label("Service Method Invoked Event")public class ServiceMethodCalledEvent extends Event implements ServiceMethodCalledFact {
     private final String contextId;
     private final String correlationId;
     private final String invocationId;

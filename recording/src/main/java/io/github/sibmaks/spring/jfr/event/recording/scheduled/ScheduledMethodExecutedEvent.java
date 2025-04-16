@@ -17,8 +17,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @StackTrace(false)
 @Category(Categories.SCHEDULED)
-@Label("Scheduled Method Executed Event")
-
-public class ScheduledMethodExecutedEvent extends Event implements InvocationExecutedFact {
+@Label("Scheduled Method Executed Event")public class ScheduledMethodExecutedEvent extends Event implements InvocationExecutedFact {
     private final String invocationId;
 }

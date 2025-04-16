@@ -19,11 +19,9 @@ import lombok.Setter;
 @Getter
 @Builder
 @AllArgsConstructor
-@StackTrace(value = false)
+@StackTrace(false)
 @Category(Categories.KAFKA_CONSUMER)
-@Label("Kafka Consumer Commit Failed")
-
-public class KafkaConsumerCommitFailedEvent extends Event implements KafkaConsumerCommitFailedFact {
+@Label("Kafka Consumer Commit Failed")public class KafkaConsumerCommitFailedEvent extends Event implements KafkaConsumerCommitFailedFact {
     private final String commitId;
     private final String exceptionClass;
     private final String exceptionMessage;

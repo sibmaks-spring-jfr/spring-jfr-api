@@ -19,10 +19,8 @@ import lombok.Setter;
 @Getter
 @Builder
 @AllArgsConstructor
-@StackTrace(value = false)
+@StackTrace(false)
 @Category(Categories.KAFKA_CONSUMER)
-@Label("Kafka Consumer Message Processed")
-
-public class KafkaConsumerMessageProcessedEvent extends Event implements KafkaConsumerMessageProcessedFact {
+@Label("Kafka Consumer Message Processed")public class KafkaConsumerMessageProcessedEvent extends Event implements KafkaConsumerMessageProcessedFact {
     private final String messageId;
 }

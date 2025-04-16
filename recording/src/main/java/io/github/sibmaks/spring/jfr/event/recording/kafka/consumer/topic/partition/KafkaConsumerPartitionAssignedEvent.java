@@ -19,11 +19,9 @@ import lombok.Setter;
 @Getter
 @Builder
 @AllArgsConstructor
-@StackTrace(value = false)
+@StackTrace(false)
 @Category(Categories.KAFKA_CONSUMER)
-@Label("Kafka Consumer Partition Assigned")
-
-public class KafkaConsumerPartitionAssignedEvent extends Event implements KafkaConsumerPartitionAssignedFact {
+@Label("Kafka Consumer Partition Assigned")public class KafkaConsumerPartitionAssignedEvent extends Event implements KafkaConsumerPartitionAssignedFact {
     private final String consumerId;
     private final String partitions;
 }

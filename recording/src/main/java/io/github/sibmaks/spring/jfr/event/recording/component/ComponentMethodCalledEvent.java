@@ -15,7 +15,7 @@ import lombok.Setter;
 @Getter
 @Builder
 @AllArgsConstructor
-@StackTrace
+@StackTrace(false)
 @Category(Categories.COMPONENT)
 @Label("Component Method Invoked Event")
 public class ComponentMethodCalledEvent extends Event implements ComponentMethodCalledFact {

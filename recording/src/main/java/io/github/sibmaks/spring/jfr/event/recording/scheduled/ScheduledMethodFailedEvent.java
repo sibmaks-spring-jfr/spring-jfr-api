@@ -17,9 +17,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @StackTrace(false)
 @Category(Categories.SCHEDULED)
-@Label("Scheduled Method Failed Event")
-
-public class ScheduledMethodFailedEvent extends Event implements InvocationFailedFact {
+@Label("Scheduled Method Failed Event")public class ScheduledMethodFailedEvent extends Event implements InvocationFailedFact {
     private final String invocationId;
     private final String exceptionClass;
     private final String exceptionMessage;

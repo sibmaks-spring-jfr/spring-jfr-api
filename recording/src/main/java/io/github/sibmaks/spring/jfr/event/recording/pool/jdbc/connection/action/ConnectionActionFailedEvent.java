@@ -15,11 +15,9 @@ import lombok.Setter;
 @Getter
 @Builder
 @AllArgsConstructor
-@StackTrace
+@StackTrace(false)
 @Category(Categories.POOL_JDBC)
-@Label("Connection Action Failed Event")
-
-public class ConnectionActionFailedEvent extends Event implements ConnectionActionFailedFact {
+@Label("Connection Action Failed Event")public class ConnectionActionFailedEvent extends Event implements ConnectionActionFailedFact {
     private final String connectionId;
     private final long actionIndex;
     private final String exceptionClass;

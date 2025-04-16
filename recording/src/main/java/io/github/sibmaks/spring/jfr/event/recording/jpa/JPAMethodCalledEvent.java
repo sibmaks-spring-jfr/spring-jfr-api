@@ -15,11 +15,9 @@ import lombok.Setter;
 @Getter
 @Builder
 @AllArgsConstructor
-@StackTrace
+@StackTrace(false)
 @Category(Categories.JPA)
-@Label("JPA Method Invoked Event")
-
-public class JPAMethodCalledEvent extends Event implements JPAMethodCalledFact {
+@Label("JPA Method Invoked Event")public class JPAMethodCalledEvent extends Event implements JPAMethodCalledFact {
     private final String contextId;
     private final String correlationId;
     private final String invocationId;
