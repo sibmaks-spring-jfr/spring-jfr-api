@@ -21,6 +21,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @StackTrace(false)
 @Category(Categories.KAFKA_CONSUMER)
-@Label("Kafka Consumer Closed Event")public class KafkaConsumerClosedEvent extends Event implements KafkaConsumerClosedFact {
+@Label("Kafka Consumer Closed Event")
+public class KafkaConsumerClosedEvent extends Event implements KafkaConsumerClosedFact {
     private final String consumerId;
 }

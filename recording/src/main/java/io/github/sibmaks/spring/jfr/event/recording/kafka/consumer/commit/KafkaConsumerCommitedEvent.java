@@ -21,6 +21,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @StackTrace(false)
 @Category(Categories.KAFKA_CONSUMER)
-@Label("Kafka Consumer Commited")public class KafkaConsumerCommitedEvent extends Event implements KafkaConsumerCommitedFact {
+@Label("Kafka Consumer Commited")
+public class KafkaConsumerCommitedEvent extends Event implements KafkaConsumerCommitedFact {
     private final String commitId;
 }

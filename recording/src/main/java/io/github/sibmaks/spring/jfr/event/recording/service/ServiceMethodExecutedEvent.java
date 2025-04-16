@@ -17,6 +17,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @StackTrace(false)
 @Category(Categories.SERVICE)
-@Label("Service Method Executed Event")public class ServiceMethodExecutedEvent extends Event implements InvocationExecutedFact {
+@Label("Service Method Executed Event")
+public class ServiceMethodExecutedEvent extends Event implements InvocationExecutedFact {
     private final String invocationId;
 }

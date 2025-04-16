@@ -21,7 +21,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @StackTrace(false)
 @Category(Categories.KAFKA_CONSUMER)
-@Label("Kafka Consumer Created Event")public class KafkaConsumerCreatedEvent extends Event implements KafkaConsumerCreatedFact {
+@Label("Kafka Consumer Created Event")
+public class KafkaConsumerCreatedEvent extends Event implements KafkaConsumerCreatedFact {
     private final String contextId;
     private final String consumerFactory;
     private final String consumerId;

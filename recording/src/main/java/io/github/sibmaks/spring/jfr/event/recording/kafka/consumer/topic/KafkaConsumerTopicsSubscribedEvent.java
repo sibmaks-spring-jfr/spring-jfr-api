@@ -21,7 +21,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @StackTrace(false)
 @Category(Categories.KAFKA_CONSUMER)
-@Label("Kafka Consumer Topics Subscribed")public class KafkaConsumerTopicsSubscribedEvent extends Event implements KafkaConsumerTopicsSubscribedFact {
+@Label("Kafka Consumer Topics Subscribed")
+public class KafkaConsumerTopicsSubscribedEvent extends Event implements KafkaConsumerTopicsSubscribedFact {
     private final String consumerId;
     private final String topics;
 }

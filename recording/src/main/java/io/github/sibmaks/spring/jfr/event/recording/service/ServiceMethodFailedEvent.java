@@ -17,7 +17,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @StackTrace(false)
 @Category(Categories.SERVICE)
-@Label("Service Method Failed Event")public class ServiceMethodFailedEvent extends Event implements InvocationFailedFact {
+@Label("Service Method Failed Event")
+public class ServiceMethodFailedEvent extends Event implements InvocationFailedFact {
     private final String invocationId;
     private final String exceptionClass;
     private final String exceptionMessage;

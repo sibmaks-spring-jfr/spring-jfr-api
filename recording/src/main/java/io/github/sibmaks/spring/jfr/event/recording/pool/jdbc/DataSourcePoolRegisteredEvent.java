@@ -17,7 +17,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @StackTrace(false)
 @Category(Categories.POOL_JDBC)
-@Label("Data Source Pool Registered Event")public class DataSourcePoolRegisteredEvent extends Event implements DataSourcePoolRegisteredFact {
+@Label("Data Source Pool Registered Event")
+public class DataSourcePoolRegisteredEvent extends Event implements DataSourcePoolRegisteredFact {
     private final String contextId;
     private final String poolId;
     private final String poolName;

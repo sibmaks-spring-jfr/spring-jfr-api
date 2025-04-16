@@ -21,7 +21,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @StackTrace(false)
 @Category(Categories.KAFKA_CONSUMER)
-@Label("Kafka Consumer Partition Revoked")public class KafkaConsumerPartitionRevokedEvent extends Event implements KafkaConsumerPartitionRevokedFact {
+@Label("Kafka Consumer Partition Revoked")
+public class KafkaConsumerPartitionRevokedEvent extends Event implements KafkaConsumerPartitionRevokedFact {
     private final String consumerId;
     private final String partitions;
 }

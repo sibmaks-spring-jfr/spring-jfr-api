@@ -17,6 +17,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @StackTrace(false)
 @Category(Categories.COMPONENT)
-@Label("Component Method Executed Event")public class ComponentMethodExecutedEvent extends Event implements InvocationExecutedFact {
+@Label("Component Method Executed Event")
+public class ComponentMethodExecutedEvent extends Event implements InvocationExecutedFact {
     private final String invocationId;
 }

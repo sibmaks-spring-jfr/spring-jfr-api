@@ -21,7 +21,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @StackTrace(false)
 @Category(Categories.KAFKA_CONSUMER)
-@Label("Kafka Consumer Message Processing Failed")public class KafkaConsumerMessageFailedEvent extends Event implements KafkaConsumerMessageFailedFact {
+@Label("Kafka Consumer Message Processing Failed")
+public class KafkaConsumerMessageFailedEvent extends Event implements KafkaConsumerMessageFailedFact {
     private final String messageId;
     private final String exceptionClass;
     private final String exceptionMessage;

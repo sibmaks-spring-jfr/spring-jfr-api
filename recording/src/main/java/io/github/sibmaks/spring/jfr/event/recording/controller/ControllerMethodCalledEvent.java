@@ -17,7 +17,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @StackTrace(false)
 @Category(Categories.CONTROLLER)
-@Label("Controller Method Called Event")public class ControllerMethodCalledEvent extends Event implements ControllerMethodCalledFact {
+@Label("Controller Method Called Event")
+public class ControllerMethodCalledEvent extends Event implements ControllerMethodCalledFact {
     private final String contextId;
     private final String invocationId;
     private final String className;

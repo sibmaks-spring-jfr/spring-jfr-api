@@ -17,7 +17,8 @@ import lombok.Setter;
 @StackTrace(false)
 @AllArgsConstructor
 @Category(Categories.POOL_JDBC)
-@Label("Connection Requested Event")public class ConnectionRequestedEvent extends Event implements ConnectionRequestedFact {
+@Label("Connection Requested Event")
+public class ConnectionRequestedEvent extends Event implements ConnectionRequestedFact {
     private final String contextId;
     private final String poolId;
     private final String connectionId;

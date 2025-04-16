@@ -21,7 +21,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @StackTrace(false)
 @Category(Categories.KAFKA_CONSUMER)
-@Label("Kafka Consumer Partition Lost")public class KafkaConsumerPartitionLostEvent extends Event implements KafkaConsumerPartitionLostFact {
+@Label("Kafka Consumer Partition Lost")
+public class KafkaConsumerPartitionLostEvent extends Event implements KafkaConsumerPartitionLostFact {
     private final String consumerId;
     private final String partitions;
 }

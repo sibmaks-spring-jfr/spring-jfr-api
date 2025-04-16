@@ -17,7 +17,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @StackTrace(false)
 @Category(Categories.POOL_JDBC)
-@Label("Connection Action Succeed Event")public class ConnectionActionSucceedEvent extends Event implements ConnectionActionSucceedFact {
+@Label("Connection Action Succeed Event")
+public class ConnectionActionSucceedEvent extends Event implements ConnectionActionSucceedFact {
     private final String connectionId;
     private final long actionIndex;
 }
